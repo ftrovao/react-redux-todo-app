@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodoLimao } from '../redux/todoSlice';
 
 const AddTodoForm = () => {
 	const [value, setValue] = useState('');
 
+	const dispatch = useDispatch();
 	const onSubmit = (event) => {
 		event.preventDefault();
 		console.log('user entered: ' + value);
+		console.log("event.target.value");
+		console.log(value);
+		dispatch(addTodoLimao(
+			{title: value,}
+		))
 	};
 
 	return (
@@ -19,7 +27,7 @@ const AddTodoForm = () => {
 				onChange={(event) => setValue(event.target.value)}
 			></input>
 
-			<button type='submit' className='btn btn-primary mb-2'>
+			<button onClick={(event)=>console.log(event)} type='submit' className='btn btn-primary mb-2'>
 				Submit
 			</button>
 		</form>

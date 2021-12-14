@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 const TodoItem = ({ id, title, completed }) => {
+	const dispatch = useDispatch();
 	return (
 		<li className={`list-group-item ${completed && 'list-group-item-success'}`}>
 			<div className='d-flex justify-content-between'>
